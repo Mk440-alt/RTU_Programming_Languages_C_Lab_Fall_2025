@@ -1,31 +1,33 @@
 #include <stdio.h>
-#include <math.h>
 
 int is_prime(int n) {
-    if (n <= 1) return 0;
-    for (int i = 2; i <= sqrt(n); i++) {
-        if (n % i == 0) return 0;
+    if (n < 2) return 0;  
+
+    for (int i = 2; i * i <= n; i++) {
+        if (n % i == 0) {
+            return 0; 
+        }
     }
-    return 1;
+
+    return 1; // prime
 }
 
 int main(void) {
     int n;
 
-    printf("Write an integer n (>= 2): ");
-    scanf("%d", &n);
-
-    if (n < 2) {
-        printf("Error: Please write an integer greater than or equal to 2.\n");
-    } else {
-        printf("Prime numbers up to %d are:\n", n);
-        for (int i = 2; i <= n; i++) {
-            if (is_prime(i)) {
-                printf("%d ", i);
-            }
-        }
-        printf("\n");
+    printf("Enter an integer n (>= 2): ");
+    if (scanf("%d", &n) != 1 || n < 2) {
+        printf("Invalid input. Please write an integer >= 2.\n");
+        return 1;
     }
+
+    printf("Prime numbers up to %d:\n", n);
+    for (int i = 2; i <= n; i++) {
+        if (is_prime(i)) {
+            printf("%d ", i);
+        }
+    }
+    printf("\n");
 
     return 0;
 }

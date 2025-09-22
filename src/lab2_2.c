@@ -1,24 +1,24 @@
 #include <stdio.h>
 
-long long factorial(int n) {
-    long long result = 1;
+int sum_to_n(int n) {
+    int sum = 0;
     for (int i = 1; i <= n; i++) {
-        result *= i;
+        sum += i;
     }
-    return result;
+    return sum;
 }
 
 int main(void) {
     int n;
 
-    printf("Write a non-negative integer n: ");
+    printf("Write a positive integer n: ");
     scanf("%d", &n);
 
-    if (n < 0) {
-        printf("Error: Please write a non-negative integer.\n");
+    if (n < 1) {
+        printf("Error: n must be a positive integer.\n");
     } else {
-        long long result = factorial(n);
-        printf("%d! = %lld\n", n, result);
+        int result = sum_to_n(n);
+        printf("The sum of integers from 1 to %d is %d\n", n, result);
     }
 
     return 0;

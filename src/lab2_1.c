@@ -11,14 +11,14 @@ int sum_to_n(int n) {
 int main(void) {
     int n;
 
-    printf("Write  positive integer n: ");
+    printf("Write a positive integer n: ");
     scanf("%d", &n);
 
     if (n < 1) {
-        printf("Error: Please write a positive integer greater than or equal to 1.\n");
+        printf("Error: n must be a positive integer.\n");
     } else {
         int result = sum_to_n(n);
-        printf("The sum of integers from 1 to %d is: %d\n", n, result);
+        printf("The sum of integers from 1 to %d is %d\n", n, result);
     }
 
     return 0;
