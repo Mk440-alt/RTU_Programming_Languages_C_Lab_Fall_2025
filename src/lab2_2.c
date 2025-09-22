@@ -1,25 +1,39 @@
 #include <stdio.h>
 
-int sum_to_n(int n) {
-    int sum = 0;
+/*
+    Task:
+    Write a function long long factorial(int n) that computes n!
+    using a loop (not recursion).
+
+    In main():
+      - Ask user for an integer n
+      - If n is negative, print an error and exit
+      - Otherwise, call factorial and print the result
+*/
+
+#include <stdio.h>
+
+long long factorial(int n) {
+    long long factor = 1;
     for (int i = 1; i <= n; i++) {
-        sum += i;
+        factor *= i;
     }
-    return sum;
+    return factor;
 }
 
 int main(void) {
     int n;
 
-    printf("Enter a positive integer n: ");
+    printf("Enter a non-negative integer n: ");
     scanf("%d", &n);
 
-    if (n < 1) {
-        printf("Error: n must be a positive integer.\n");
-    } else {
-        int result = sum_to_n(n);
-        printf("The sum of integers from 1 to %d is %d\n", n, result);
+    if (n < 0) {
+        printf("Error: n must be non-negative.\n");
+        return 1; // exit with error
     }
+
+    long long result = factorial(n);
+    printf("%d! = %lld\n", n, result);
 
     return 0;
 }
