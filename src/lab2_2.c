@@ -11,7 +11,7 @@ int sum_to_n(int n) {
 int main(void) {
     int n;
 
-    printf("Write a positive integer n: ");
+    printf("Enter a positive integer n: ");
     scanf("%d", &n);
 
     if (n < 1) {
