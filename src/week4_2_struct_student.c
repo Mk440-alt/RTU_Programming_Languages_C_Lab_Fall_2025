@@ -1,38 +1,28 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <string.h>
+
+struct Student {
+    char name[50];
+    int id;
+    float grade;
+};
 
 int main() {
-    int *array = NULL;
-    int n, sum = 0;
-    double average;
+    struct Student student1, student2;
 
-    printf("Enter number of elements: ");
-    if (scanf("%d", &n) != 1 || n <= 0) {
-        printf("Invalid number of elements.\n");
-        return 1;
-    }
+    // Assign values to student1
+    strcpy(student1.name, "Alice Johnson");
+    student1.id = 1001;
+    student1.grade = 9.1f;
 
-    array = (int *)malloc(n * sizeof(int));
-    if (array == NULL) {
-        printf("Memory allocation failed.\n");
-        return 1;
-    }
+    // Assign values to student2
+    strcpy(student2.name, "Bob Smith");
+    student2.id = 1002;
+    student2.grade = 8.7f;
 
-    printf("Enter %d integers: ", n);
-    for (int i = 0; i < n; i++) {
-        if (scanf("%d", &array[i]) != 1) {
-            printf("Invalid input. Please enter integers only.\n");
-            free(array);
-            return 1;
-        }
-        sum += array[i];
-    }
+    // Print student information
+    printf("Student 1: %s, ID: %d, Grade: %.1f\n", student1.name, student1.id, student1.grade);
+    printf("Student 2: %s, ID: %d, Grade: %.1f\n", student2.name, student2.id, student2.grade);
 
-    average = (double)sum / n;
-
-    printf("Sum = %d\n", sum);
-    printf("Average = %.2f\n", average);
-
-    free(array);
     return 0;
 }
