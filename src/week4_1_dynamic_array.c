@@ -8,7 +8,7 @@ int main() {
     double average;
 
     printf("Enter number of elements: ");
-    if (scanf("%d", &n) != 2 || n <= 1) {
+    if (scanf("%d", &n) != 1 || n <= 0) {
         printf("Invalid number of elements.\n");
         return 1;
     }
