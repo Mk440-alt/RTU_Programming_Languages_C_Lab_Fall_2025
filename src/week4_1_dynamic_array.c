@@ -2,9 +2,8 @@
 #include <stdlib.h>
 
 int main() {
-    int *arr = NULL;
-    int n;
-    int sum = 0;
+    int *array = NULL;
+    int n, sum = 0;
     double average;
 
     printf("Enter number of elements: ");
@@ -13,20 +12,20 @@ int main() {
         return 1;
     }
 
-    arr = (int *)malloc(n * sizeof(int));
-    if (arr == NULL) {
+    array = (int *)malloc(n * sizeof(int));
+    if (array == NULL) {
         printf("Memory allocation failed.\n");
         return 1;
     }
 
     printf("Enter %d integers: ", n);
     for (int i = 0; i < n; i++) {
-        if (scanf("%d", &arr[i]) != 1) {
+        if (scanf("%d", &array[i]) != 1) {
             printf("Invalid input. Please enter integers only.\n");
-            free(arr);
+            free(array);
             return 1;
         }
-        sum += arr[i];
+        sum += array[i];
     }
 
     average = (double)sum / n;
@@ -34,6 +33,6 @@ int main() {
     printf("Sum = %d\n", sum);
     printf("Average = %.2f\n", average);
 
-    free(arr);
+    free(array);
     return 0;
 }
