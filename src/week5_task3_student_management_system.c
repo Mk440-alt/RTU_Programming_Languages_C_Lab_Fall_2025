@@ -58,4 +58,59 @@ int main(void) {
 }
 
 int load_students(Student arr[]) {
-    FILE *fp = fopen(DATA_FILE, "r")_*
+    FILE *fp = fopen(DATA_FILE, "r");
+    if (fp == NULL) return 0;
+    int count = 0;
+    while (fscanf(fp, "%49[^,],%d,%f\n", arr[count].name, &arr[count].id, &arr[count].gpa) == 3) {
+        count++;
+        if (count >= MAX_STUDENTS) break;
+    }
+    fclose(fp);
+    return count;
+}
+
+void save_students(Student arr[], int count) {
+    FILE *fp = fopen(DATA_FILE, "w");
+    if (fp == NULL) {
+        printf("Error saving data.\n");
+        return;
+    }
+    for (int i = 0; i < count; i++) {
+        fprintf(fp, "%s,%d,%.2f\n", arr[i].name, arr[i].id, arr[i].gpa);
+    }
+    fclose(fp);
+}
+
+void add_student(Student arr[], int *count) {
+    if (*count >= MAX_STUDENTS) {
+        printf("Student list is full.\n");
+        return;
+    }
+    printf("Enter name: ");
+    fgets(arr[*count].name, NAME_LEN, stdin);
+    arr[*count].name[strcspn(arr[*count].name, "\n")] = '\0';
+    printf("Enter ID: ");
+    scanf("%d", &arr[*count].id);
+    printf("Enter GPA: ");
+    scanf("%f", &arr[*count].gpa);
+    getchar();
+    (*count)++;
+    printf("Student added.\n");
+}
+
+void list_students(Student arr[], int count) {
+    if (count == 0) {
+        printf("No students found.\n");
+        return;
+    }
+    printf("\n%-4s %-20s %-6s %-5s\n", "No", "Name", "ID", "GPA");
+    for (int i = 0; i < count; i++) {
+        printf("%-4d %-20s %-6d %-5.2f\n", i + 1, arr[i].name, arr[i].id, arr[i].gpa);
+    }
+}
+
+
+
+
+
+
